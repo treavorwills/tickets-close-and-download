@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "fs": "^0.0.1-security",
+    "request": "^2.88.2"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
