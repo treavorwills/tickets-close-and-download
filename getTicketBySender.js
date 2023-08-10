@@ -3,10 +3,10 @@ require('dotenv').config();
 
 const apiKey = process.env.FRESHDESK_API_KEY;
 const domain = process.env.FRESHDESK_DOMAIN;
-const ticketId = 245834;
+const ticketSender = process.env.SENDER;
 
 const options = {
-    url: `https://${domain}.freshdesk.com/api/v2/tickets/${ticketId}`,
+    url: `https://${domain}.freshdesk.com/api/v2/tickets?email=${ticketSender}`,
     method: 'GET',
     auth: {
       user: apiKey,
@@ -21,13 +21,8 @@ request.get(options, function(error, response, body) {
   } else if (response.statusCode !== 200) {
     console.error('Status:', response.statusCode, body);
   } else {
-    const responseData = JSON.parse(body);
-
-    if (responseData.hasOwnProperty('id')) {
-      console.log(`Ticket ID: ${responseData.id}`);
-      console.log(`Subject: ${responseData.subject}`)
-    } else {
-      console.log('No matching tickets found.');
-    }
+    const responseData = JSON.parse(body)
+    // console.log(`Amount of tickets: ${responseData.length}`);
+    console.log(`ticket ID: ${responseData[0].id}, subject: ${responseData[0].subject}`);
   }
 });
