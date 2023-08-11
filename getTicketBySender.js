@@ -23,6 +23,6 @@ request.get(options, function(error, response, body) {
   } else {
     const responseData = JSON.parse(body)
     // console.log(`Amount of tickets: ${responseData.length}`);
-    console.log(`ticket ID: ${responseData[0].id}, subject: ${responseData[0].subject}`);
+    console.log(`ticket ID: ${responseData[0].id}, subject: ${responseData[0].subject}, agent: ${responseData[0].responder_id},`);
   }
 });
