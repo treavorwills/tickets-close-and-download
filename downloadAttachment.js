@@ -29,7 +29,7 @@ request.get(options, function (error, response, body) {
       console.log(`Ticket ID: ${responseData.id}`);
       console.log(responseData.attachments[4].name);
 
-      // download the attachment - in all cases, it's the 5th attachment, or the 4th index
+      // download the attachment - the volume summary is always the 5th attachment, or the 4th index
       request
         .get(responseData.attachments[4].attachment_url)
         .on("error", (err) => {
